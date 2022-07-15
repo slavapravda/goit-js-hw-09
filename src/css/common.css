@@ -17,20 +17,16 @@ img {
   max-width: 100%;
 }
 
-/* input{
-
+.field{
+  margin-top: 15px;
+  display: flex;
+  font-size: 48px;
+  color: rgb(164, 164, 5);
 }
 
-.btn{
-  width: 100px;
-  height: 75px;
-  border-radius: 10px;
-  box-shadow: 10px 5px 5px black;
-  background-color: yellow;
-  color: black;
-
-
+.label{
+  margin-left: 15px;
+  font-size: 15px;
+  color: blue;
+  
 }
-.btn:hover{
-  background-color: blue;
-} */

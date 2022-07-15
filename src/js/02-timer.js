@@ -12,6 +12,7 @@ const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 
+
 btnStartEl.disabled = true;
 
 let selectedTime = null;
@@ -66,26 +67,23 @@ class Timer {
     this.timerId = setInterval(() => {
       const currentTime = Date.now();
       const deltaTime = selectedTime - currentTime;
-      const componentsTimer = convertMs(deltaTime);
-      this.updateComponentsTimer(componentsTimer);
 
       if (deltaTime <= 0) {
         return this.stop();
       }
+      const { days, hours, minutes, seconds } = convertMs(deltaTime);
+
+      daysEl.textContent = pad(days);
+      hoursEl.textContent = pad(hours);
+      minutesEl.textContent = pad(minutes);
+      secondsEl.textContent = pad(seconds);
     }, 1000);
   }
 
-  updateComponentsTimer({ days, hours, minutes, seconds }) {
-    daysEl.textContent = days;
-    hoursEl.textContent = hours;
-    minutesEl.textContent = minutes;
-    secondsEl.textContent = seconds;
-  }
-
-  stop(){
-    clearInterval(this.timerId)
+  stop() {
+    clearInterval(this.timerId);
   }
 }
 
-const timer = new Timer ();
+const timer = new Timer();
 btnStartEl.addEventListener('click', () => timer.start());
